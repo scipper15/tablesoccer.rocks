@@ -9,6 +9,8 @@ Will be loaded from a `.env`-file not included in repository.
 
 import os
 from pathlib import Path
+from sys import platform
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -18,6 +20,10 @@ class Config:
     BASE_DIR = Path(__file__).parent.resolve()
     SECRET_KEY = os.getenv('SECRET_KEY')
 
-    SQLALCHEMY_DATABASE_URI = f"sqlite:///{BASE_DIR / 'dyp.db'}"
+    # Note the 3 vs 4 slashes
+    if platform in ['linux', 'linux2', 'darwin']:
+        SQLALCHEMY_DATABASE_URI = f"sqlite:////{BASE_DIR / 'dyp.sqlite'}"
+    elif platform == 'win32':
+        SQLALCHEMY_DATABASE_URI = f"sqlite:///{BASE_DIR / 'dyp.sqlite'}"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = False
