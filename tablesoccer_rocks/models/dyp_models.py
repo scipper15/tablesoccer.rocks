@@ -50,7 +50,7 @@ class Dyp(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
     round: Mapped[int] = mapped_column(Integer)
     match_day: Mapped[int] = mapped_column(Integer)
-    date: Mapped[date] = mapped_column(Date)
+    dyp_date: Mapped[date] = mapped_column(Date)
 
     player_history_id = mapped_column(ForeignKey("player_history.id"))
     player_history: Mapped[PlayerHistory] = relationship(back_populates="dyps_rel")
