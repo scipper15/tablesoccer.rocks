@@ -24,6 +24,7 @@
         ) }}"></script>
   <!-- custom JavaScript -->
   <script src="{{ url_for('static', filename='nav_bar.js') }}"></script>
+  <script src="{{ url_for('static', filename='date_picker.js') }}"></script>
 </head>
 
 <body>
@@ -41,15 +42,35 @@
       </a>
     </div>
 
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a href="#" class="button is-primary">
-            <strong>Einloggen</strong>
-          </a>
+    <div id="navMenu" class="navbar-menu">
+
+      {% if not current_user.is_authenticated %}
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a href="{{ url_for('auth.login') }}" class="button is-primary">
+              <strong>Einloggen</strong>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+      {% endif %}
+      {% if current_user.is_authenticated %}
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a href="#" class="button is-link">
+              <span class="icon">
+                <i class="fas fa-gear"></i>
+              </span>
+            </a>
+            <a href="{{ url_for('auth.logout') }}" class="button is-danger">
+              <strong>Ausloggen</strong>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endif %}
     </div>
   </nav>
   <!-- Content -->

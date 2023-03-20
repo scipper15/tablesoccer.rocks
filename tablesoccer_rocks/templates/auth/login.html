@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="title">{% block title %} Eintragen von Ergebnissen {% endblock %}</h1>
+    <p class="subtitle">Bitte logge dich zuerst ein</p>
+
+    <form method="POST" action="/login">
+        <div class="field">
+          <label class="label">Benutzername</label>
+          <div class="control has-icons-left has-icons-right">
+            <input class="input" type="email" placeholder="mail@provider.tld" name="email">
+            <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control has-icons-left has-icons-right">
+            <input class="input" type="password" placeholder="Passwort" name="password">
+            <span class="icon is-small is-left">
+              <i class="fas fa-key"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <button class="button is-primary is-fullwidth"><strong>Anmelden</strong></button>
+          </div>
+        </div>
+    </form>
+
+    <!-- errors -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="section">
+            <div class="notification is-danger">
+             {{ messages[0] }}
+      {% endif %}
+            </div>
+        </div>
+    {% endwith %}
+{% endblock %}
