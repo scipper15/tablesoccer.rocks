@@ -7,6 +7,8 @@ from tablesoccer_rocks.extensions import db
 
 class User(UserMixin, db.Model):
     __tablename__ = "user"
+    __table_args__ = ({'extend_existing': True})
+
     id: Mapped[int] = mapped_column(primary_key=True)
     user_name: Mapped[str] = mapped_column(String(100), unique=True, nullable=False)
     password_hash: Mapped[str] = mapped_column(String(100), nullable=False)

@@ -9,7 +9,7 @@ from tablesoccer_rocks.extensions import db
 
 class Player(db.Model):
     __tablename__ = "player"
-    __table_args__ = {'extend_existing': True}
+    __table_args__ = ({'extend_existing': True})
 
     id: Mapped[int] = mapped_column(primary_key=True)
     full_name: Mapped[str] = mapped_column(String(60), unique=True)
@@ -24,7 +24,7 @@ class Player(db.Model):
 
 class PlayerHistory(db.Model):
     __tablename__ = "player_history"
-    __table_args__ = {'extend_existing': True}
+    __table_args__ = ({'extend_existing': True})
 
     id: Mapped[int] = mapped_column(primary_key=True)
     points: Mapped[int] = mapped_column(Integer)
@@ -45,7 +45,7 @@ class PlayerHistory(db.Model):
 
 class Dyp(db.Model):
     __tablename__ = "dyp"
-    __table_args__ = {'extend_existing': True}
+    __table_args__ = ({'extend_existing': True})
 
     id: Mapped[int] = mapped_column(primary_key=True)
     round: Mapped[int] = mapped_column(Integer)
