@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 from datetime import date
 
 from sqlalchemy import ForeignKey, String, Integer, Date
@@ -28,11 +28,11 @@ class PlayerHistory(db.Model):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     points: Mapped[int] = mapped_column(Integer)
-    tendency: Mapped[int] = mapped_column(Integer, nullable=True)
-    first: Mapped[int] = mapped_column(Integer, nullable=True)
-    second: Mapped[int] = mapped_column(Integer, nullable=True)
-    third: Mapped[int] = mapped_column(Integer, nullable=True)
-    fourth: Mapped[int] = mapped_column(Integer, nullable=True)
+    tendency: Mapped[Optional[int]] = mapped_column(Integer)
+    first: Mapped[Optional[int]] = mapped_column(Integer)
+    second: Mapped[Optional[int]] = mapped_column(Integer)
+    third: Mapped[Optional[int]] = mapped_column(Integer)
+    fourth: Mapped[Optional[int]] = mapped_column(Integer)
 
     player_id = mapped_column(ForeignKey("player.id"))
     player: Mapped[Player] = relationship(back_populates="dyp_histories_rel")
