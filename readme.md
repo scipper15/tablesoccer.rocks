@@ -4,7 +4,7 @@
 
 Holds several scripts and web applications focused on table soccer:
 
-- Web application with XML-import of `Draw Your Partner` tournaments held using [Kickertool]([Kickertool](https://kickertool.de/)).
+- Web application with `xml`-import of `Draw Your Partner` tournaments held using [Kickertool]([Kickertool](https://kickertool.de/)).
 - Todo: Import player data via web scraping from [Bayerischer Tischfußball Verband e.V.](https://btfv.de/) pages.
 - Todo: Web application calculating and showing player ratings over time using [TrueSkill](https://en.wikipedia.org/wiki/TrueSkill), based on previously scraped data.
 
@@ -64,7 +64,7 @@ At `upload_results` you choose a date and a `zip` file for the match day exporte
 4. Match days are counted up automatically with each upload.
 5. You'll be redirected showing the most recent ranking.
 
-**N.b.:** After reaching maximum match days or the end date of the series (can be altered on the profile page), the database will be reset (!!) with the next file upload! This behavior will change in the future, but it was the easiest way to set up things smoothly, as old results aren't needed, as soon a new D.Y.P. series starts.
+**N.b.:** After reaching maximum match days or the end date of the series (can be altered on the profile page), the database will be reset (!!) with the next file upload! This behavior will change in the future, but it was the easiest way to set up things smoothly, as old results aren't needed, as soon a new `D.Y.P.` series starts.
 
 If a match day didn't take place you have to alter `Letzter Spieltag` in `profile` accordingly.
 
