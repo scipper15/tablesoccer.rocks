@@ -54,11 +54,11 @@ Sign-up feature is not yet implemented. You would access the database and insert
 
 ### How it works
 
-`/dyp/` will redirect to the most recent match day and shows the rankings.To upload results you must login at `login`. You'll be redirected to `profile`. Update values here if necessary. A new menu entry is displayed if logged in: `Ergebnisse hochladen`.
+`/dyp/` will redirect to the most recent match day and shows the rankings. To upload results you must login at `login`. You'll be redirected to `profile`. Update values here if necessary. A new menu entry is displayed if logged in: `Ergebnisse hochladen`.
 
 At `upload_results` you choose a date and a `zip` file for the match day exported from [KickerTool](https://kickertool.de/). After hitting `import` a few things happen:
 
-1. The file is uploaded to the server. Files with the same file name can't be uploaded to twice to avoid duplicate imports.
+1. The file is uploaded to the server. Files with the same file name can't be uploaded twice to avoid duplicate imports.
 2. The app extracts `xml` and writes it to the database.
 3. Match days are counted up automatically with each upload.
 4. You'll be redirected showing the most recent ranking.
