@@ -24,6 +24,8 @@
         ) }}"></script>
   <!-- custom JavaScript -->
   <script src="{{ url_for('static', filename='nav_bar.js') }}"></script>
+  <script src="{{ url_for('static', filename='date_picker.js') }}"></script>
+  <script src="{{ url_for('static', filename='upload.js') }}"></script>
 </head>
 
 <body>
@@ -41,6 +43,13 @@
     </div>
 
     <div id="navMenu" class="navbar-menu">
+      {% if current_user.is_authenticated %}
+      <div class="navbar-start">
+        <a href="{{ url_for('admin.upload_results') }}" class="navbar-item">
+          Ergebnisse hochladen
+        </a>
+      </div>
+      {% endif %}
       {% if not current_user.is_authenticated %}
       <div class="navbar-end">
         <div class="navbar-item">

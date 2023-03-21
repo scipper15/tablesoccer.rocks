@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- for calendar: sets the min date selectable with date picker -->
+<script>last_import_date = "{{ last_import_date|safe }}"</script>
+
+<h1 class="title has-text-centered">
+  D.Y.P. Ergebnisse hochladen
+</h1>
+
+<form class="has-text-centered" method="POST" enctype="multipart/form-data" action="/upload_results">
+  <div class="columns">
+    <div class="column field block">
+      <label class="label has-text-left">1. Datum des zugehörigen D.Y.P. auswählen</label>
+      <input id="date-picker" name="date-picker" type="date">
+    </div>
+    <div class="column field block file is-small is-fullwidth has-name is-boxed is-primary is-centered">
+      <label class="label has-text-left">2. Datei auswählen</label>
+      <label class="file-label">
+        <input id="file-upload" class="file-input" type="file" name="uploaded-file">
+
+        <span class="file-cta">
+          <span class="icon-text">
+            <span class="icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span>Upload</span>
+          </span>
+        </span>
+
+        <span id="file-name" class="file-name">
+          Zip-Datei mit Kickertool XML auswählen.
+        </span>
+      </label>
+    </div>
+  </div>
+  <div class="block error-messages">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="notification is-danger">
+      <ul class="flashes">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    {% endwith %}
+  </div>
+  <div class="block buttons upload">
+    <button class="button is-primary is-fullwidth">Import</button>
+  </div>
+</form>
+{% endblock %}

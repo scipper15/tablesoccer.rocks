@@ -1,11 +1,15 @@
+from pathlib import Path
 from datetime import datetime
 
 from flask import redirect, url_for, render_template, request, flash
 from flask_login import login_required
+from werkzeug.utils import secure_filename
 
+from config import Config
 from tablesoccer_rocks.extensions import db
 from tablesoccer_rocks.blueprints.admin import bp
 from tablesoccer_rocks.models.dyp_config import DypConfig
+from tablesoccer_rocks.blueprints.admin.utils import save_results_from_dyp2db, get_xml_from_zip, get_players_from_dyp_xml
 from init_db import init_dyp_config
 
 
@@ -52,3 +56,64 @@ def profile():
         'admin/profile.html',
         dyp_config=dyp_config
     )
+
+
+@bp.route('/upload_results', methods=['GET', 'POST'])
+@login_required
+def upload_results():
+    if request.method == 'POST':
+        # performing checks
+        if not request.form['date-picker']:
+            flash('Bitte Datum festlegen.')
+            return redirect(request.url)
+        dyp_date = datetime.strptime(request.form['date-picker'], '%d.%m.%Y')
+
+        if 'uploaded-file' not in request.files:
+            flash('Es kam kein file_part an.')
+            return redirect(request.url)
+        file = request.files['uploaded-file']
+
+        if file.filename == '':
+            flash('Keine Datei ausgewählt.')
+            return redirect(request.url)
+
+        if file and allowed_file(file.filename):
+            file_name = secure_filename(file.filename)
+            if file_already_exists(file_name):
+                flash(f'Diese Turnierergebnisse sind bereits hochgeladen worden: "{file_name}".')
+                return render_template('dyp/upload_results.html')
+
+            # n.b.: save zip: to avoid double upload / import
+            # TODO uncomment file.save to prevent upload of same file after testing
+            # file.save(Path(Config.UPLOAD_FOLDER) / file_name)
+            # extract data from xml
+            qualifying_tree = get_xml_from_zip(file, file_name, Config.XML_QUALIFYING_FILE_NAME)
+            elimination_tree = get_xml_from_zip(file, file_name, Config.XML_ELIMINATION_FILE_NAME)
+            result_xml_qualifying = get_players_from_dyp_xml(qualifying_tree)
+            result_xml_elimination = get_players_from_dyp_xml(elimination_tree)
+
+            # finally write xml data to db
+            save_results_from_dyp2db(result_xml_qualifying, result_xml_elimination, dyp_date)
+
+            dyp_config = db.session.get(DypConfig, 1)
+
+            return redirect(url_for('admin.upload_results', match_day=dyp_config.last_import_match_day))
+        else:
+            flash(f'Nicht erlaubter Dateityp: "{file.filename}". Bitte eine "zip"-Ergebnisdatei hochladen.')
+
+    # for calendar: sets the min date selectable with date picker
+    dyp_config = db.session.get(DypConfig, 1)
+    last_import_date = dyp_config.last_import_date
+    return render_template(
+        'admin/upload_results.html',
+        last_import_date=last_import_date
+    )
+
+
+def allowed_file(file_name):
+    return '.' in file_name and \
+           file_name.rsplit('.', 1)[1].lower() in Config.ALLOWED_EXTENSIONS
+
+
+def file_already_exists(file_name):
+    return True if Path.is_file(Path(Config.UPLOAD_FOLDER) / file_name) else False

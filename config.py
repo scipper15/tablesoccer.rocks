@@ -27,3 +27,8 @@ class Config:
         SQLALCHEMY_DATABASE_URI = f"sqlite:///{BASE_DIR / 'dyp.sqlite'}"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = False
+
+    UPLOAD_FOLDER = 'dyp_results'
+    XML_QUALIFYING_FILE_NAME = 'qualifying-group-1.xml'
+    XML_ELIMINATION_FILE_NAME = 'elimination-KO-Baum 1.xml'
+    ALLOWED_EXTENSIONS = {'zip'}
