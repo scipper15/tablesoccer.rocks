@@ -171,6 +171,7 @@ def get_ranking_table_data(dyp_round, match_day):
 
 
 def get_amount_jackpot(dyp_round, match_day):
+    # assuming 1 € per player and match day
     amount_jackpot = db.session.execute(
         select(
             func.count(Player.full_name).label('amount_jackpot'),
