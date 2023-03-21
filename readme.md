@@ -52,6 +52,19 @@ This behavior can be changed in `init_db.py`. As of today this project is still 
 
 Sign-up feature is not yet implemented. You would access the database and insert a new user there (or delete the old one). Use `SHA256`-hashes for password hashing.
 
+### How it works
+
+`/dyp/` will redirect to the most recent match day and shows the rankings.To upload results you must login at `login`. You'll be redirected to `profile`. Update values here if necessary. A new menu entry is displayed if logged in: `Ergebnisse hochladen`.
+
+At `upload_results` you choose a date and a `zip` file for the match day exported from [KickerTool](https://kickertool.de/). After hitting `import` a few things happen:
+
+1. The file is uploaded to the server. Files with the same file name can't be uploaded to twice to avoid duplicate imports.
+2. The app extracts `xml` and writes it to the database.
+3. Match days are counted up automatically with each upload.
+4. You'll be redirected showing the most recent ranking.
+
+**N.b.:** After reaching maximum match days or the end date of the series (can be altered on the profile page), the data base will be reset with the next file upload! This behavior will change in the future, but it was the easiest way to set up things smoothly, as old results aren't needed, as soon a new D.Y.P. series starts.
+
 ## License
 
 ## Contact
