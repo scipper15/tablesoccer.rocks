@@ -46,7 +46,7 @@ Used by [Mitkickzentrale](https://mitkickzentrale.de/), a registered, self-gover
 
 ## Usage
 
-By default a user `info@mitkickzentrale.de` is created. Password for development is `1234`. This behavior can be changed in `init_db.py`. As of today this project is still built up. So many features are not yet implemented but may be added in future releases.
+By default, a user `info@mitkickzentrale.de` is created. Password for development is `1234`. This behavior can be changed in `init_db.py`. As of today this project is still built up. Many features are not yet implemented but may be added in future releases.
 
 ## License
 
