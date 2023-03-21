@@ -10,10 +10,18 @@ Will be loaded from a `.env`-file not included in repository.
 import os
 from pathlib import Path
 from sys import platform
+import secrets
 
 from dotenv import load_dotenv
 
 load_dotenv()
+
+if Path.is_file(Path('.env')):
+    pass
+else:
+    with open('.env', 'w') as file:
+        key = secrets.token_hex()
+        file.write(f"SECRET_KEY='{key}'")
 
 
 class Config:
