@@ -7,6 +7,7 @@ from tablesoccer_rocks.models.user import User
 from tablesoccer_rocks.blueprints.main import bp as main_bp
 from tablesoccer_rocks.blueprints.auth import bp as auth_bp
 from tablesoccer_rocks.blueprints.admin import bp as admin_bp
+from tablesoccer_rocks.blueprints.dyp import bp as dyp_bp
 from tablesoccer_rocks.jinja_filters import format_date
 
 
@@ -27,6 +28,7 @@ def create_app():
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp)
     app.register_blueprint(admin_bp)
+    app.register_blueprint(dyp_bp)
 
     # for testing if development server works
     @app.route('/test/')

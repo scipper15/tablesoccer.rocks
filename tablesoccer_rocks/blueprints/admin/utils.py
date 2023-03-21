@@ -62,7 +62,7 @@ def save_results_from_dyp2db(qualifying_tree, elimination_tree, dyp_date):
         )
         d = Dyp(
             round=dyp_config.current_dyp_series,
-            match_day=match_day + 1,  # n.b.: +1 as match_day will be updated after successful commit
+            match_day=match_day,
             dyp_date=dyp_date,
         )
 
@@ -117,7 +117,7 @@ def write_tendencies():
 def update_dyp_config(dyp_date):
     # update last updated values
     dyp_config = db.session.get(DypConfig, 1)
-    dyp_config.last_date_updated = dyp_date
+    dyp_config.last_import_date = dyp_date
 
     # increment match days automatically
     # TODO IMPLEMENT: if the case, user should be advised on next login

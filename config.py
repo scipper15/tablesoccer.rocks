@@ -32,3 +32,5 @@ class Config:
     XML_QUALIFYING_FILE_NAME = 'qualifying-group-1.xml'
     XML_ELIMINATION_FILE_NAME = 'elimination-KO-Baum 1.xml'
     ALLOWED_EXTENSIONS = {'zip'}
+
+    Path.mkdir(BASE_DIR / UPLOAD_FOLDER, exist_ok=True)

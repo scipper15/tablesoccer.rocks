@@ -36,7 +36,7 @@ def profile():
                 errors = True
                 flash(f'Bitte Feld {name} ausfüllen.')
         if errors:
-            return redirect(url_for('views.admin.profile', _anchor='errors'))
+            return redirect(url_for('admin.profile', _anchor='errors'))
 
         # save form data to database
         dyp_config.current_dyp_series = request.form['current_dyp_series']
@@ -84,8 +84,7 @@ def upload_results():
                 return render_template('dyp/upload_results.html')
 
             # n.b.: save zip: to avoid double upload / import
-            # TODO uncomment file.save to prevent upload of same file after testing
-            # file.save(Path(Config.UPLOAD_FOLDER) / file_name)
+            file.save(Path(Config.UPLOAD_FOLDER) / file_name)
             # extract data from xml
             qualifying_tree = get_xml_from_zip(file, file_name, Config.XML_QUALIFYING_FILE_NAME)
             elimination_tree = get_xml_from_zip(file, file_name, Config.XML_ELIMINATION_FILE_NAME)
@@ -97,7 +96,10 @@ def upload_results():
 
             dyp_config = db.session.get(DypConfig, 1)
 
-            return redirect(url_for('admin.upload_results', match_day=dyp_config.last_import_match_day))
+            return redirect(url_for(
+                'dyp.show_results',
+                match_day=dyp_config.last_import_match_day)
+                )
         else:
             flash(f'Nicht erlaubter Dateityp: "{file.filename}". Bitte eine "zip"-Ergebnisdatei hochladen.')
 
@@ -107,7 +109,7 @@ def upload_results():
     return render_template(
         'admin/upload_results.html',
         last_import_date=last_import_date
-    )
+        )
 
 
 def allowed_file(file_name):

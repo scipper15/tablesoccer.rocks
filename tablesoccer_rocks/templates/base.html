@@ -43,6 +43,11 @@
     </div>
 
     <div id="navMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a href="{{ url_for('dyp.show_results', match_day=1000) }}" class="navbar-item">
+          DYP Rangliste
+        </a>
+      </div>
       {% if current_user.is_authenticated %}
       <div class="navbar-start">
         <a href="{{ url_for('admin.upload_results') }}" class="navbar-item">

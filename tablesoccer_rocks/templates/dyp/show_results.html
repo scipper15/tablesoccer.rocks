@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if dyp_info['match_day'] == 0 %}
+<h1 class="title">
+  Kickerkiste D.Y.P. - Diese Runde noch keine Spieltage...
+</h1>
+{% else %}
+<h1 class="title">
+  Kickerkiste D.Y.P. - Stand nach
+
+  <div class="dropdown is-hoverable">
+    <div class="dropdown-trigger">
+      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+        <span>{{ dyp_info['match_day'] }}</span>
+        <span class="icon is-small">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </button>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+      <div class="dropdown-content">
+        {% for match_day in dyp_info['total_match_days'] %}
+        <a href="{{ url_for('dyp.show_results', match_day=match_day) }}" class="dropdown-item">
+          {{ match_day }}. Spieltag
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  Spieltagen von {{ dyp_config.total_match_days }}
+</h1>
+{% endif %}
+<h2 class="subtitle">
+  DYP-Serie {{ dyp_config.current_dyp_series }} vom
+  {{ dyp_config.start_date|format_date }} bis {{ dyp_config.end_date|format_date }}
+</h2>
+
+<div class="box">
+  <table class="table is-striped is-narrow is-fullwidth">
+    <thead>
+      <tr>
+        <th>Platz</th>
+        <th>Name</th>
+        <th>Teilnahmen</th>
+        <th>Punkte</th>
+        <th><abbr title="Durchschnitt">&Oslash;</abbr></th>
+        <th>Tendenz</th>
+        <th><abbr title="Anzahl erster Platz">1.</abbr></th>
+        <th><abbr title="Anzahl zweiter Platz">2.</abbr></th>
+        <th><abbr title="Anzahl dritter Platz">3.</abbr></th>
+        <th><abbr title="Anzahl vierter Platz">4.</abbr></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tr in current_ranking %}
+      <tr>
+        <td class="has-text-centered">
+          {% if not loop.first %}
+          {% if loop.previtem['points_total'] == tr['points_total'] %}
+          <!-- Don't print place if same place-->
+          {% else %}
+          {{ loop.index }}
+          {% endif %}
+          {% else %}
+          {{ loop.index }}
+          {% endif %}
+        </td>
+        <td><strong>{{ tr['full_name'] }}</strong></td>
+        <td class="has-text-centered">{{ tr['participation_count'] }}</td>
+        <td class="has-text-centered">{{ tr['points_total'] }}</td>
+        <td class="has-text-centered">{{ '%0.2f'|format((
+          tr['points_total'] / tr['participation_count']
+          )|float) }}</td>
+        <td class="has-text-centered">
+          {% if tr['current_tendency'] == 1 %}
+          <span class="icon"><i class="fa-solid fa-arrow-trend-up"></i></span>
+          {% elif tr['current_tendency'] == 0 %}
+          <span class="icon is-center"><i class="fa-solid fa-arrow-right"></i></span>
+          {% elif tr['current_tendency'] == -1 %}
+          <span class="icon"><i class="fa-solid fa-arrow-trend-down"></i></span>
+          {% endif %}
+        </td>
+        <td>{{ tr['first']|default("-", True) }}</td>
+        <td>{{ tr['second']|default("-", True) }}</td>
+        <td>{{ tr['third']|default("-", True) }}</td>
+        <td>{{ tr['fourth']|default("-", True) }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p class="mb-5"><strong>Jackpot: {{ dyp_info['amount_jackpot'] }} €</strong></p>
+
+  <h3 class="subtitle is-underlined">Punkteschlüssel</h3>
+  <table class="table is-narrow is-bordered is-size-7">
+    <tbody>
+      <tr>
+        <td>1. Platz</td>
+        <td>{{ dyp_config['first_points'] }} Punkte</td>
+      </tr>
+      <tr>
+        <td>2. Platz</td>
+        <td>{{ dyp_config['second_points'] }} Punkte</td>
+      </tr>
+      <tr>
+        <td>3. Platz</td>
+        <td>{{ dyp_config['third_points'] }} Punkte</td>
+      </tr>
+      <tr>
+        <td>4. Platz</td>
+        <td>{{ dyp_config['fourth_points'] }} Punkte</td>
+      </tr>
+      <tr>
+        <td>Teilnahme</td>
+        <td>{{ dyp_config['participation_points'] }} Punkte</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="has-text-weight-light is-family-monospace is-size-7">
+    Stand: {{ dyp_config['last_import_date']|format_date }}, Spieltag: {{ dyp_config['last_import_match_day'] }}
+  </p>
+</div>
+{% endblock %}
