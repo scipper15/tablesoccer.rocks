@@ -16,7 +16,7 @@ $.when( $.ready ).then(function() {
             // comes from server / template: the last dyp date which was imported
             minDate: last_import_date,
             maxDate: new Date(Date.now()).toLocaleDateString('de-DE', options),
-            disabledWeekDays: [0,1,2,3,5,6]
+            disabledWeekDays: [0, 1, 2, 3, 5, 6]
         }
             // Initialize all input of type date
             var calendars = bulmaCalendar.attach('[type="date"]', options);
@@ -25,7 +25,7 @@ $.when( $.ready ).then(function() {
             for(var i = 0; i < calendars.length; i++) {
                 // Add listener to select event
                 calendars[i].on('select', date => {
-                    // console.log(date);
+                    console.log(date);
                 });
             }
 

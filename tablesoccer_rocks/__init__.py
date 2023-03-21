@@ -30,7 +30,7 @@ def create_app():
     app.register_blueprint(admin_bp)
     app.register_blueprint(dyp_bp)
 
-    # for testing if development server works
+    # to test if development server works
     @app.route('/test/')
     def hello_world():
         return '<p>Hello, World!</p>'

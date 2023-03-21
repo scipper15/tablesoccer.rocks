@@ -20,6 +20,7 @@ def show_results(match_day=None):
     # remove match day which is being displayed from dropdown in template
     if total_match_days:
         del total_match_days[match_day - 1]
+    # further meta info displayed in template
     dyp_info = {
         'match_day': match_day,
         'total_match_days': total_match_days,

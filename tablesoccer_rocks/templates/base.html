@@ -11,17 +11,21 @@
     href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAD51rUA/719AN+whAC5bSEA/8CGAP//5wDvx6QA///wAOOyigDBbx4A0aBwAOezhADpzrkA9syhAKZfHADXoWoA69G5AO/SswDJjlYAsWITAPPTtgC4Yw0A4sCiAM6ukQDBZAcAw2QHAO3DmQDUlVkAz7WdAP//6AD6w5AA/968ANKBMADmzLQA5c23AP//8QDozLQA//73AP//+gDns4UArWAXAP/PmQDMkFQAsGcjAP+/fADKZQIA17SSAP//8gDLhkAA///7AN27ngD/6s8AsGESAPLStQDRi08A47+hANqORgDXkEwA58GeAL9kCQDpwZ4AwWQJAMZlAwC7aRgA/9+4APvfwQDhsYEA///qAP//8wD/6rUA//75AP/lwQDyzqoArmAZAL12NgDLj1MAtWINANaQTQDhqHAA3I5HAKdsNADEZQQA/757AKlvNAC/ZxMA///iAMx/NgDLZwEAx553AOHKugDqyKsA9MWZAP//6wDnzLcA6c60AOnMtwDpsoUAzHEWALt2NwDOcRYA/s2fAK9hFADw0rcAtn9SAMBjCAD/9eAA8b+RAP/jogD//9oA27CJAOKxgwDqya8A5rJ9AP//9QDjs4kA//77AP/qwADSonIAwXIjAP/sxgDt0rgAr18YAP/zyQDTjEwA26d4ALtjCQDdp3gA241GAM+RWwDfwq0Apm0wANmRSQDrwpsA+b6GAO3CmwCzbScAymYAAMtmAADMn3MA//7zAM6fcwD///YA//35ANCfcwChXh8Av49fAMaNWQDTpXwA69LCANXAsQDgwaIA26d5ANmOSgDBfTwA2K+IAMVnBADiyLcA1LSXAP//5QDhsn8AwGoWAL+GTgDgsYUA0IAzAP//7gDmy7cA//79AKxeFwCqXxoArF8aAPLRtwDy07QA4KNlALNiEQDapncAumMLALxjCwDqwZoA1q+JAOzCnQDCZQgA7MSaAMGBQAD/+uAA/75/ALJrLADcsYYA/+eoAL2HUgDjsoAA5bKAAOOzgwDetI8A///4AOnNtQD1yqMAxW8dAKZfGwDKcBcA2qFpAMxwFwC2eTsA3KFpAPDRuADapngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwY1EIyMjIyMjIyMjRI0mplwXk8x8rq58rpfMfpMypI7Dj4A2mH9Pfzh/f397Z1pxhVApYgnIY2PGYWNjxLkILwGQG7sDFRkZFVGIVz15YAdSDsVrRYKtP8mviIloSQsHUqg0MGx0U04NZZsttKcLBywosBNkBTNpHbZ9PhhJCwe4qFSgK2ojMaSevEw7qScHBJmjIFahty8RQ0CHdkpyLx4STYM5Khp3kQBVcEuSwERbCsqsrMd1Qg9YH3qKjC5EBm1uvr2/ogKfuppHSLKdcW83PISEsbOEtYY6lkEWHCWcDMs1NRSqqqs1ZngQgZVGI1mlwiTCXV1eX10hIpSLcwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
     rel="icon" type="image/x-icon" />
   <!-- libraries for all pages -->
-  <script src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.min.js') }}"></script>
-  <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/bulma/css/bulma.min.css') }}">
+  <script src="{{ url_for(
+        'static', filename='node_modules/jquery/dist/jquery.min.js'
+      ) }}"></script>
+  <link rel="stylesheet" href="{{ url_for(
+        'static', filename='node_modules/bulma/css/bulma.min.css'
+      ) }}">
   <link rel="stylesheet" href="{{ url_for(
         'static', filename='node_modules/@fortawesome/fontawesome-free/css/all.min.css'
-        ) }}">
+      ) }}">
   <link rel="stylesheet" href="{{ url_for(
         'static', filename='node_modules/bulma-calendar/dist/css/bulma-calendar.min.css'
-        ) }}">
+      ) }}">
   <script src="{{ url_for(
         'static', filename='node_modules/bulma-calendar/dist/js/bulma-calendar.min.js'
-        ) }}"></script>
+      ) }}"></script>
   <!-- custom JavaScript -->
   <script src="{{ url_for('static', filename='nav_bar.js') }}"></script>
   <script src="{{ url_for('static', filename='date_picker.js') }}"></script>
@@ -55,6 +59,7 @@
         </a>
       </div>
       {% endif %}
+
       {% if not current_user.is_authenticated %}
       <div class="navbar-end">
         <div class="navbar-item">
