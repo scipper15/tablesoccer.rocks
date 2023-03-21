@@ -24,7 +24,6 @@
         ) }}"></script>
   <!-- custom JavaScript -->
   <script src="{{ url_for('static', filename='nav_bar.js') }}"></script>
-  <script src="{{ url_for('static', filename='date_picker.js') }}"></script>
 </head>
 
 <body>
@@ -34,7 +33,6 @@
       <a class="navbar-item" href="{{ url_for('main.index') }}">
         <img src="{{ url_for('static', filename='logo.png') }}" width="120" height="90">
       </a>
-
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -43,7 +41,6 @@
     </div>
 
     <div id="navMenu" class="navbar-menu">
-
       {% if not current_user.is_authenticated %}
       <div class="navbar-end">
         <div class="navbar-item">
@@ -59,7 +56,7 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a href="#" class="button is-link">
+            <a href="{{ url_for('admin.profile') }}" class="button is-link">
               <span class="icon">
                 <i class="fas fa-gear"></i>
               </span>
