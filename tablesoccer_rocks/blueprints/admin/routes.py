@@ -81,7 +81,7 @@ def upload_results():
             file_name = secure_filename(file.filename)
             if file_already_exists(file_name):
                 flash(f'Diese Turnierergebnisse sind bereits hochgeladen worden: "{file_name}".')
-                return render_template('dyp/upload_results.html')
+                return render_template('admin/upload_results.html')
 
             # n.b.: save zip: to avoid double upload / import
             file.save(Path(Config.UPLOAD_FOLDER) / file_name)
