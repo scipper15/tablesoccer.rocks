@@ -12,7 +12,7 @@ Used by [Mitkickzentrale](https://mitkickzentrale.de/), a registered, self-gover
 
 ## Built With
 
-- [Flask]([Flask](https://flask.palletsprojects.com/en/2.2.x/))
+- [Flask](https://flask.palletsprojects.com/en/2.2.x/)
   - [Flask-SQLAlchemy](https://flask-sqlalchemypalletsprojects.com/en/3.0.x/)
   - [Flask-Login](https://flask-login.readthedocs.io/en/latest/)
 - [Jinja](https://jinja.palletsprojects.com/en/3.1.x/)
