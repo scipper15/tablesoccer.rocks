@@ -1,5 +1,5 @@
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from flask import redirect, url_for, render_template, request, flash
 from flask_login import login_required
@@ -106,7 +106,7 @@ def upload_results():
 
     # for calendar: sets the min date selectable with date picker
     dyp_config = db.session.get(DypConfig, 1)
-    last_import_date = dyp_config.last_import_date
+    last_import_date = dyp_config.last_import_date + timedelta(days=7)
     return render_template(
         'admin/upload_results.html',
         last_import_date=last_import_date
