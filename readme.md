@@ -5,8 +5,8 @@
 Holds several scripts and web applications focused on table soccer:
 
 - Web application with XML-import of `Draw Your Partner` tournaments held using [Kickertool]([Kickertool](https://kickertool.de/)).
-- Todo: Import player data via web scraping from [Bayerischer Tischfußball Verband e.V.](https://btfv.de/)-pages.
-- Todo: Web application calculating and showing player ratings over time using [TrueSkill](https://en.wikipedia.org/wiki/TrueSkill) based on scraped data.
+- Todo: Import player data via web scraping from [Bayerischer Tischfußball Verband e.V.](https://btfv.de/) pages.
+- Todo: Web application calculating and showing player ratings over time using [TrueSkill](https://en.wikipedia.org/wiki/TrueSkill), based on previously scraped data.
 
 Used by [Mitkickzentrale](https://mitkickzentrale.de/), a registered, self-governed, non-profit organization dedicated to promoting table soccer.
 
@@ -46,7 +46,7 @@ Used by [Mitkickzentrale](https://mitkickzentrale.de/), a registered, self-gover
 
 ## Usage
 
-By default a user `info@mitkickzentrale.de` is created. Password for development is `1234`. This behavior can be changed in `init_db.py`. As of today this project is still built up. So many features are not yet implemented but may be added in future releases.
+By default, a user `info@mitkickzentrale.de` is created. Password for development is `1234`. This behavior can be changed in `init_db.py`. As of today this project is still built up. Many features are not yet implemented but may be added in future releases.
 
 ## License
 
