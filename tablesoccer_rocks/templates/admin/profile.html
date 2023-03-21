@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  Willkommen!
+</h1>
+<div class="section">
+  <form action="{{ url_for('admin.profile')}}" , method="POST">
+
+    <h2 class="subtitle">Spieltag Einstellungen</h2>
+    <div class="field is-horizontal">
+      <div class="field-body">
+        <div class="field has-addons">
+          <p class="control">
+            <a class="button is-static">
+              Aktuelle D.Y.P. Serie (Nr.)
+            </a>
+          </p>
+          <p class="control is-expanded">
+            <input class="input" type="text" value="{{ dyp_config['current_dyp_series'] }}" name="current_dyp_series"
+              placeholder="Nr. der D.Y.P.-Serie">
+          </p>
+        </div>
+
+        <div class="field has-addons">
+          <p class="control">
+            <a class="button is-static">
+              Spieltage gesamt
+            </a>
+          </p>
+          <p class="control is-expanded">
+            <input class="input" type="text" value="{{ dyp_config['total_match_days'] }}" name="total_match_days"
+              placeholder="Gesamtzahl der Spieltage">
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-body">
+
+        <div class="field has-addons">
+          <p class="control">
+            <a class="button is-static">
+              Erster Spieltag
+            </a>
+          </p>
+          <p class="control is-expanded">
+            <input class="input" type="text" value="{{ dyp_config['start_date']|format_date }}" name="start_date"
+              placeholder="01.01.2000">
+          </p>
+        </div>
+
+        <div class="field has-addons">
+          <p class="control">
+            <a class="button is-static">
+              Letzter Spieltag
+            </a>
+          </p>
+          <p class="control is-expanded">
+            <input class="input" type="text" value="{{ dyp_config['end_date']|format_date }}" name="end_date"
+              placeholder="01.01.2000">
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-body">
+        <div class="field has-addons">
+          <p class="control">
+            <a class="button is-static">
+              Letztes Update Ergebnisse
+            </a>
+          </p>
+          <p class="control is-expanded">
+            <input class="input" type="text" value="{{ dyp_config['last_import_date']|format_date }}"
+              name="last_date_updated" placeholder="01.01.2000" disabled>
+          </p>
+        </div>
+
+        <div class="field has-addons">
+          <p class="control">
+            <a class="button is-static">
+              Letzter Spieltag (Nr.)
+            </a>
+          </p>
+          <p class="control is-expanded">
+            <input class="input" type="text" value="{{ dyp_config['last_import_match_day'] }}"
+              name="last_import_match_day" placeholder="Letzter Spieltag" disabled>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <h2 class="subtitle mt-5">Punkteschlüssel</h2>
+    <div class="field is-horizontal">
+      <div class="field-body">
+        <div class="field has-addons">
+          <p class="control">
+            <a class="button is-static">
+              1. Platz
+            </a>
+          </p>
+          <p class="control is-expanded">
+            <input class="input" type="text" value="{{ dyp_config['first_points'] }}" name="first_points"
+              placeholder="1. Platz">
+          </p>
+        </div>
+
+        <div class="field has-addons">
+          <p class="control">
+            <a class="button is-static">
+              2. Platz
+            </a>
+          </p>
+          <p class="control is-expanded">
+            <input class="input" type="text" value="{{ dyp_config['second_points'] }}" name="second_points"
+              placeholder="2. Platz">
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-body">
+
+        <div class="field has-addons">
+          <p class="control">
+            <a class="button is-static">
+              3. Platz
+            </a>
+          </p>
+          <p class="control is-expanded">
+            <input class="input" type="text" value="{{ dyp_config['third_points'] }}" name="third_points"
+              placeholder="3. Platz">
+          </p>
+        </div>
+
+        <div class="field has-addons">
+          <p class="control">
+            <a class="button is-static">
+              4. Platz
+            </a>
+          </p>
+          <p class="control is-expanded">
+            <input class="input" type="text" value="{{ dyp_config['fourth_points'] }}" name="fourth_points"
+              placeholder="4. Platz">
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="field has-addons">
+      <p class="control">
+        <a class="button is-static">
+          Punkte Teilnahme
+        </a>
+      </p>
+      <p class="control is-expanded">
+        <input class="input" type="text" value="{{ dyp_config['participation_points'] }}" name="participation_points"
+          placeholder="Punkte Teilnahme">
+      </p>
+    </div>
+
+    <div class="block error-messages" id="errors">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <div class="notification is-danger">
+        <ul class="flashes">
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      {% endwith %}
+    </div>
+
+    <div class="control mt-5">
+      <button class="is-fullwidth button is-link">Speichern</button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
