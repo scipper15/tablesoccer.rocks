@@ -72,4 +72,4 @@ If a match day didn't take place you have to alter `Letzter Spieltag` in `profil
 
 ## Contact
 
-[Martin-Reinhard Eichhorn](reinhard.eichhorn@gmail.com)
+<reinhard.eichhorn@gmail.com>
