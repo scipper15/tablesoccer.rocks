@@ -59,11 +59,14 @@ Sign-up feature is not yet implemented. You would access the database and insert
 At `upload_results` you choose a date and a `zip` file for the match day exported from [KickerTool](https://kickertool.de/). After hitting `import` a few things happen:
 
 1. The file is uploaded to the server. Files with the same file name can't be uploaded twice to avoid duplicate imports.
-2. The app extracts `xml` and writes it to the database.
-3. Match days are counted up automatically with each upload.
-4. You'll be redirected showing the most recent ranking.
+2. The upload date is stored. The calendar is set to accept upload dates equal or greater than the last upload date.
+3. The app extracts player names and rankings from the `xml` and writes the data to the database.
+4. Match days are counted up automatically with each upload.
+5. You'll be redirected showing the most recent ranking.
 
-**N.b.:** After reaching maximum match days or the end date of the series (can be altered on the profile page), the data base will be reset with the next file upload! This behavior will change in the future, but it was the easiest way to set up things smoothly, as old results aren't needed, as soon a new D.Y.P. series starts.
+**N.b.:** After reaching maximum match days or the end date of the series (can be altered on the profile page), the database will be reset (!!) with the next file upload! This behavior will change in the future, but it was the easiest way to set up things smoothly, as old results aren't needed, as soon a new D.Y.P. series starts.
+
+If a match day didn't take place you have to alter `Letzter Spieltag` in `profile` accordingly.
 
 ## License
 
