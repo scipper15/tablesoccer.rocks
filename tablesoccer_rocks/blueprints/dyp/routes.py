@@ -18,7 +18,8 @@ def show_results(match_day=None):
     ranking_data = get_ranking_table_data(dyp_config.current_dyp_series, match_day)
     total_match_days = list(range(1, dyp_config.last_import_match_day + 1))
     # remove match day which is being displayed from dropdown in template
-    del total_match_days[match_day - 1]
+    if total_match_days:
+        del total_match_days[match_day - 1]
     dyp_info = {
         'match_day': match_day,
         'total_match_days': total_match_days,
