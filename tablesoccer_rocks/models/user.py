@@ -13,6 +13,5 @@ class User(UserMixin, db.Model):
     user_name: Mapped[str] = mapped_column(String(100), unique=True, nullable=False)
     password_hash: Mapped[str] = mapped_column(String(100), nullable=False)
 
-
     def __repr__(self):
         return f'<User "{self.user_name}">'

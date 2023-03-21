@@ -17,7 +17,7 @@ Used by [Mitkickzentrale](https://mitkickzentrale.de/), a registered, self-gover
   - [Flask-Login](https://flask-login.readthedocs.io/en/latest/)
 - [Jinja](https://jinja.palletsprojects.com/en/3.1.x/)
 - [SQLite](https://sqlite.org/index.html)
-- [SQLalchemy](https://www.sqlalchemy.org/)
+- [SQLAlchemy](https://www.sqlalchemy.org/)
 - [Bulma](https://bulma.io/)
 - [jQuery](https://jquery.com/)
 - [Font Awesome](https://fontawesome.com/)

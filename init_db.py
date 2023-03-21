@@ -27,7 +27,7 @@ def create_test_user():
 
 def init_dyp_config():
     dyp_config = DypConfig(
-        id = 1,
+        id=1,
         current_dyp_series=30,
         total_match_days=25,
         start_date=date(2022, 11, 10),
@@ -38,10 +38,11 @@ def init_dyp_config():
         second_points=15,
         third_points=10,
         fourth_points=5,
-        participation_points = 10
+        participation_points=10
     )
     db.session.add(dyp_config)
     db.session.commit()
+
 
 if __name__ == '__main__':
     init_db()

@@ -9,7 +9,8 @@ from config import Config
 from tablesoccer_rocks.extensions import db
 from tablesoccer_rocks.blueprints.admin import bp
 from tablesoccer_rocks.models.dyp_config import DypConfig
-from tablesoccer_rocks.blueprints.admin.utils import save_results_from_dyp2db, get_xml_from_zip, get_players_from_dyp_xml
+from tablesoccer_rocks.blueprints.admin.utils import save_results_from_dyp2db, get_xml_from_zip, \
+    get_players_from_dyp_xml
 from init_db import init_dyp_config
 
 

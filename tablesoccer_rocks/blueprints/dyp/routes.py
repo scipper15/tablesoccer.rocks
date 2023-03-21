@@ -5,6 +5,7 @@ from tablesoccer_rocks.models.dyp_config import DypConfig
 from tablesoccer_rocks.blueprints.dyp import bp
 from tablesoccer_rocks.blueprints.admin.utils import get_amount_jackpot, get_ranking_table_data
 
+
 @bp.route('/dyp/spieltag/<int:match_day>')
 @bp.route('/dyp/spieltag/')
 @bp.route('/dyp/')
