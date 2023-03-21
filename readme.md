@@ -34,7 +34,7 @@ Used by [Mitkickzentrale](https://mitkickzentrale.de/), a registered, self-gover
 3. Create virtual environment: `python -m venv ./.venv --upgrade-deps`
 4. Activate environment: `.\.venv\Scripts\activate`
 5. Install requirements: `pip install -r requirements.txt`.
-6. Install `np dependencies:
+6. Install `npm` dependencies:
    1. `cd .\tablesoccer_rocks\static\`
    2. `npm install`
 7. Initialize database (go back to root folder):
@@ -42,11 +42,15 @@ Used by [Mitkickzentrale](https://mitkickzentrale.de/), a registered, self-gover
    2. `>>> from init_db import init_db`
    3. `>>> init_db()`: This creates a `SQLite` database using models in `models`-folder.
 8. Spin up development server: `flask --app tablesoccer_rocks run --debug`
-9. Access page on `http://127.0.0.1:5000/`
+9. Access page at `http://127.0.0.1:5000/`
 
 ## Usage
 
-By default, a user `info@mitkickzentrale.de` is created. Password for development is `1234`. This behavior can be changed in `init_db.py`. As of today this project is still built up. Many features are not yet implemented but may be added in future releases.
+By default, a user `info@mitkickzentrale.de` is created. Password for development is `1234`.
+
+This behavior can be changed in `init_db.py`. As of today this project is still built up. Many features are not yet implemented but may be added in future releases.
+
+Sign-up feature is not yet implemented. You would access the database and insert a new user there (or delete the old one). Use `SHA256`-hashes for password hashing.
 
 ## License
 
