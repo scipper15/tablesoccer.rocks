@@ -185,22 +185,6 @@ def get_amount_jackpot(dyp_round, match_day):
     return amount_jackpot
 
 
-def build_table_data(ranking_table, ranking):
-    ranking_table.append(
-        {
-            'full_name': ranking.full_name,
-            'participation_count': ranking.participation,
-            'total_points': ranking.points_total,
-            'average_points': ranking.points_total / ranking.participation,
-            'first_points': ranking.first,
-            'second_points': ranking.second,
-            'third_points': ranking.third,
-            'fourth_points': ranking.fourth,
-        }
-    )
-    return ranking_table
-
-
 def get_xml_from_zip(file_obj, zip_file_name, xml_filename):
     with zipfile.ZipFile(file_obj, 'r') as zip_ref:
         in_zip_path = Path(zip_file_name).stem  # Path(file_name).stem equals path inside zip
