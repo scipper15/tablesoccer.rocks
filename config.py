@@ -14,8 +14,6 @@ import secrets
 
 from dotenv import load_dotenv
 
-load_dotenv()
-
 if Path.is_file(Path('.env')):
     pass
 else:
@@ -23,6 +21,7 @@ else:
         key = secrets.token_hex()
         file.write(f"SECRET_KEY='{key}'")
 
+load_dotenv()
 
 class Config:
     BASE_DIR = Path(__file__).parent.resolve()
