@@ -27,11 +27,7 @@ class Config:
     BASE_DIR = Path(__file__).parent.resolve()
     SECRET_KEY = os.getenv('SECRET_KEY')
 
-    # Note the 3 vs 4 slashes
-    if platform in ['linux', 'linux2', 'darwin']:
-        SQLALCHEMY_DATABASE_URI = f"sqlite:////{BASE_DIR / 'dyp.sqlite'}"
-    elif platform == 'win32':
-        SQLALCHEMY_DATABASE_URI = f"sqlite:///{BASE_DIR / 'dyp.sqlite'}"
+    SQLALCHEMY_DATABASE_URI = f"sqlite:///{BASE_DIR / 'dyp.sqlite'}"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = False
 
