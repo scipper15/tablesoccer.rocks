@@ -27,7 +27,7 @@ class Config:
     BASE_DIR = Path(__file__).parent.resolve()
     SECRET_KEY = os.getenv('SECRET_KEY')
 
-    SQLALCHEMY_DATABASE_URI = f"{BASE_DIR / 'dyp.sqlite'}"
+    SQLALCHEMY_DATABASE_URI = f"sqlite:///{BASE_DIR / 'dyp.sqlite'}"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = False
 
