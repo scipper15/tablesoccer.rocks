@@ -4,14 +4,12 @@ from tablesoccer_rocks.extensions import db
 from tablesoccer_rocks.models.dyp_config import DypConfig
 from tablesoccer_rocks.blueprints.dyp import bp
 from tablesoccer_rocks.blueprints.admin.utils import get_amount_jackpot, get_ranking_table_data
-from config import Config
 
 
 @bp.route('/dyp/spieltag/<int:match_day>')
 @bp.route('/dyp/spieltag/')
 @bp.route('/dyp/')
 def show_results(match_day=None):
-    print(Config.SQLALCHEMY_DATABASE_URI)
     dyp_config = db.session.get(DypConfig, 1)
     if match_day is None or match_day > dyp_config.last_import_match_day:
         return redirect(url_for('dyp.show_results', match_day=dyp_config.last_import_match_day))
