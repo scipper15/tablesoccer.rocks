@@ -46,11 +46,17 @@ Used by [Mitkickzentrale](https://mitkickzentrale.de/), a registered, self-gover
 
 ## Usage
 
+### Development
+
 By default, a user `info@mitkickzentrale.de` is created. Password for development is `1234`.
 
 This behavior can be changed in `init_db.py`. As of today this project is still built up. Many features are not yet implemented but may be added in future releases.
 
 Sign-up feature is not yet implemented. You would access the database and insert a new user there (or delete the old one). Use `SHA256`-hashes for password hashing.
+
+### Production
+
+Don't use the built-in development server for production. Use `gunicorn -w 4 'tablesoccer_rocks:create_app()'` instead.
 
 ### How it works
 
