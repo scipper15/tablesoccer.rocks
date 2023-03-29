@@ -4,6 +4,7 @@ __pycache__
 .env
 .venv
 .venv_linux
+.wslrun
 *.db
 *.sqlite
 node_modules
