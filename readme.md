@@ -41,7 +41,7 @@ Used by [Mitkickzentrale](https://mitkickzentrale.de/), a registered, self-gover
    1. `flask --app tablesoccer_rocks shell`
    2. `>>> from init_db import init_db`
    3. `>>> init_db()`: This creates a `SQLite` database using models in `models`-folder.
-8. Spin up development server: `flask --app tablesoccer_rocks run --debug`
+8. Spin up development server: `flask run --debug`
 9. Access page at `http://127.0.0.1:5000/`
 
 ## Usage
