@@ -26,8 +26,9 @@ load_dotenv()
 class Config:
     BASE_DIR = Path(__file__).parent.resolve()
     SECRET_KEY = os.getenv('SECRET_KEY')
+    DB_NAME = 'dyp.sqlite'
 
-    SQLALCHEMY_DATABASE_URI = f"sqlite:///{BASE_DIR / 'dyp.sqlite'}"
+    SQLALCHEMY_DATABASE_URI = f"sqlite:///{BASE_DIR / DB_NAME}"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = False
 
